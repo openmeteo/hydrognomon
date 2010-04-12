@@ -1,0 +1,181 @@
+﻿We would like this software to be free software, but it is not,
+because it needs to be linked to a non-free library. Below we provide
+the license for the software in legal language as well as a
+human-readable explanation of what you are and what you are not
+allowed to do, the reasons for which it is non-free, and what you
+could do if you want to help make it free.
+
+1. Legal text
+=============
+
+A. Copyright and license for the source code
+--------------------------------------------
+
+Copyright (C) 1997-2010 National Technical University of Athens
+Copyright (C) 2000 Luis Enrique Silvestre
+Copyright (C) 1992-2009 The University of Tennessee
+Copyright (C) 2000-2004 Adrian Meyer
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, see <http://www.gnu.org/licenses>.
+
+Additional permission under GNU GPL version 3 section 7:
+
+If you modify this Program, or any covered work, by linking or
+combining it with any Delphi Libraries, the licensors of this Program
+grant you additional permission to treat these Delphi Libraries as
+System Libraries within the meaning of the GNU GPL version 3 section
+1, and therefore exclude them from the Corresponding Source.  "Delphi
+Libraries" means (a) those files, libraries and/or source code that
+are included in the packaging of Delphi with the intent of being
+redistributed to the end user; and (b) updates to such files,
+libraries and/or source code that are provided free of charge to
+Delphi licensees.  "Delphi" means any edition of Borland Delphi 7,
+Borland Delphi 2005, or any Delphi version later than Borland Delphi
+2005 (including CodeGear Delphi 2009 and any later version).
+Therefore, this provision allows you to link, for example, to versions
+of the TEEChart library that are distributed with Delphi (or to free
+updates of such versions), but not to other versions of the TEEChart
+library.
+
+B. Copyright and license for object code (binaries)
+---------------------------------------------------
+
+Copyright (C) 1997-2010 National Technical University of Athens
+Copyright (C) 2009 Embarcadero Technologies, Inc.
+Copyright (C) 2000 Luis Enrique Silvestre
+Copyright (C) 1992-2009 The University of Tennessee
+Copyright (C) 2000-2004 Adrian Meyer
+
+DEFINITIONS
+
+The "source code" for a work means the preferred form of the work
+for making modifications to it.  "Object code" means any non-source
+form of a work.
+
+"The Program" refers to the Object Code licensed under this license.
+
+GRANT OF LICENSE
+
+We grant you a personal, nonexclusive, nontransferable right to
+install and execute the Program, without modification, for your own
+internal use.
+
+LIMITATIONS
+
+You may not: (a) modify, adapt, alter, translate, or create derivative
+works of the Program or merge the Program with other software; (b)
+lease, rent or loan the Program to any third party; (c) sublicense,
+distribute or otherwise transfer the Program to any third party; (d)
+reverse engineer, decompile, disassemble, or otherwise attempt to
+derive the source code of the Program; (e) remove, alter, or obscure
+any confidentiality or proprietary notices (including copyright and
+trademark notices); or (f) reproduce or use the Program except as
+expressly permitted in this license.
+
+DISCLAIMER OF WARRANTY AND LIMITATION OF LIABILITY
+
+There is no warranty for the Program, to the extent permitted by
+applicable law.  Except when otherwise stated in writing, the copyright
+holders and/or other parties provide the program "as is", without warranty
+of any kind, either expressed or implied, including, but not limited to,
+the implied warranties of merchantability and fitness for a particular
+purpose.  The entire risk as to the quality and performance of the
+Program is with you.  Should the program prove defective, you assume
+the cost of all necessary servicing, repair or correction.
+
+In no event unless required by applicable law or agreed to in writing
+will any copyright holder, or any other party who modifies and/or conveys
+the program as permitted above, be liable to you for damages, including any
+general, special, incidental or consequential damages arising out of the
+use or inability to use the program (including but not limited to loss of
+data or data being rendered inaccurate or losses sustained by you or third
+parties or a failure of the program to operate with any other programs),
+even if such holder or other party has been advised of the possibility of
+such damages.
+
+If the disclaimer of warranty and limitation of liability provided
+above cannot be given local legal effect according to their terms,
+reviewing courts shall apply local law that most closely approximates
+an absolute waiver of all civil liability in connection with the
+program, unless a warranty or assumption of liability accompanies a
+copy of the program in return for a fee.
+
+2. Human-readable explanation
+=============================
+
+This section is informative; we make no warranty that it is free of
+error, and you need to read the legal license terms to be
+legally certain of the licensing terms and conditions.
+
+If you are just a user who wants to use the software, then all you
+need to know is that you are permitted to install the software in an
+unlimited number of computers and have it used by an unlimited number
+of users.  You are, however, not permitted to redistribute the
+software to a third party - instead, you can tell to the third party
+to download the software from us. The rest of this section is intended
+for developers, or people who need more information and know what
+"source" and "compiled" means.
+
+Our software has largely been written in Delphi since 1997, and we
+have a fairly large code base. We have re-written parts of that
+software in Python (particularly the database management part), but
+the part of the software that does math, such as time series
+processing and hydrological modelling, cannot easily be rewritten in
+another language or tool, and although we are keeping it open as an
+option, we don't yet have the budget that would allow us to do it.  On
+the other hand, last time we checked, Lazarus, a free Delphi
+alternative, was too immature to let us contemplate porting our Delphi
+software.
+
+We therefore decided to make our Delphi software as closer to free as
+possible, but without breaking its dependency on Delphi. This creates
+two problems:
+
+1) Free software requires free tools, and Delphi is not free.
+
+2) Our software depends on Delphi libraries, which are not free. The
+   license that comes with Delphi allows the Delphi developer to
+   redistribute the Delphi libraries to the end user, but not to allow
+   the end user further redistribution.  Therefore, although we give
+   you our compiled software and would also like to allow you to give
+   it to your friend, the license we have received with Delphi does
+   not allow us to give you such permission, and therefore you should
+   tell your friend to get the software from us.
+
+As a result, if you are an end user and want to use the executable
+version of our software, we are limited by the Delphi license, because
+the executable includes the Delphi libraries. We permit you to use the
+executable for your own internal purposes, but we can't permit you
+anything else, including redistribution.
+
+If you are a developer interested in the source code, things are
+different: we give you our source code with GPL, with an additional
+term that gives you the additional right to link it with the Delphi
+libraries. You can then use Delphi to modify and compile our code. The
+resulting binary will contain both our code and the Delphi libraries;
+because it contains our code, which we licensed to you with GPL, you
+need to also provide our source code and generally comply with the
+GPL; and because it contains the Delphi libraries, you will also need
+to comply with the license you have received with Delphi.  Of course,
+if you find a way to use our code without linking to the Delphi
+libraries, you will no longer be constrained by the Delphi license and
+you will only need to comply with the GPL.
+
+Ways in which you can help make our software entirely free include
+improving Lazarus and porting our software to Lazarus. Some parts of
+the software, such as the mathematical routines, should be easier to
+migrate than the GUI part. Another way is to rewrite the whole beast
+in another language or tool. Note that a few modules have already been
+rewritten in Python (we call that Python library pthelma: it is
+available at http://openmeteo.org/).

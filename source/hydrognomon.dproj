@@ -1,0 +1,143 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{81304F39-4557-4C5F-8958-F2555654BEC0}</ProjectGuid>
+			<ProjectVersion>12.0</ProjectVersion>
+			<MainSource>hydrognomon.dpr</MainSource>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_OutputDRCFile>true</DCC_OutputDRCFile>
+			<DCC_DcuOutput>..\dcu</DCC_DcuOutput>
+			<DCC_DependencyCheckOutputName>..\bin\hydrognomon.exe</DCC_DependencyCheckOutputName>
+			<DCC_ExeOutput>..\bin</DCC_ExeOutput>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_UsePackage>vclx;vcl;dbrtl;Rave76VCL;bdertl;rtl;vclactnband;xmlrtl;vcldb;vcldbx;dsnap;dsnapcon;TeeUI;TeeDB;Tee;adortl;vclib;ibxpress;IndyCore;IndySystem;inet;intrawebdb_100_120;Intraweb_100_120;VclSmp;vclie;websnap;webdsnap;inetdbbde;inetdbxpress;soaprtl;vclribbon;dbexpress;DbxCommonDriver;DataSnapIndy10ServerTransport;DataSnapProviderClient;DataSnapServer;DbxClientDriver;DBXInterBaseDriver;DBXMySQLDriver;dbxcds;DBXSybaseASEDriver;DBXSybaseASADriver;DBXOracleDriver;DBXMSSQLDriver;DBXInformixDriver;DBXDb2Driver;IndyProtocols;thelma3;louise3</DCC_UsePackage>
+			<DCC_Platform>x86</DCC_Platform>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="hydrognomon.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="dmdravcomponents.pas">
+				<Form>DmdRavreports</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="frmtsgrid.pas">
+				<Form>FrmTimeseriesGrid</Form>
+			</DCCReference>
+			<DCCReference Include="AppOpts.pas"/>
+			<DCCReference Include="frmsplash.pas">
+				<Form>FrmSplashScreen</Form>
+			</DCCReference>
+			<DCCReference Include="frmopts.pas">
+				<Form>FrmOptions</Form>
+			</DCCReference>
+			<DCCReference Include="build_date.pas"/>
+			<DCCReference Include="frmlicen.pas">
+				<Form>FrmLicenseDialog</Form>
+			</DCCReference>
+			<DCCReference Include="UStartup.pas"/>
+			<DCCReference Include="chknewver.pas"/>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<PropertyGroup>
+			<PreBuildEvent><![CDATA[CreateBuildDateFile.exe
+license_update.exe]]></PreBuildEvent>
+		</PropertyGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">hydrognomon.dpr</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">True</VersionInfo>
+						<VersionInfo Name="MajorVer">4</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">21</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1032</VersionInfo>
+						<VersionInfo Name="CodePage">1253</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName">National Technical University of Athens</VersionInfoKeys>
+						<VersionInfoKeys Name="FileDescription">Hydrognomon - Time series hydrological processing application</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">4.0.0.21</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName">hydrognomon</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalCopyright">(c) 2010 by National Technical University of Athens</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">4.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\dcloffice2k120.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\dclofficexp120.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+					</Excluded_Packages>
+					<Language>
+						<Language Name="ProjectLang">$00000409</Language>
+						<Language Name="ActiveLang">ELL</Language>
+					</Language>
+					<Resource_DLL_Projects>
+						<Resource_DLL_Projects Name="Item0">Αγγλικά (Ηνωμένων Πολιτειών)*$00000409*ENU*ENU</Resource_DLL_Projects>
+						<Resource_DLL_Projects Name="Item1">Ελληνικά (Ελλάδας)*$00000408*ELL*ELL</Resource_DLL_Projects>
+					</Resource_DLL_Projects>
+					<RDP_Source_Files>
+						<RDP_Source_Files Name="Item0">frmtsgrid.dfm</RDP_Source_Files>
+						<RDP_Source_Files Name="Item1">dmdravcomponents.dfm</RDP_Source_Files>
+						<RDP_Source_Files Name="Item2">hydrognomon.drc</RDP_Source_Files>
+					</RDP_Source_Files>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>
