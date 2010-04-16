@@ -1,9 +1,9 @@
-﻿We would like this software to be free software, but it is not,
-because it needs to be linked to a non-free library. Below we provide
-the license for the software in legal language as well as a
-human-readable explanation of what you are and what you are not
-allowed to do, the reasons for which it is non-free, and what you
-could do if you want to help make it free.
+﻿This software is free software, but it needs to be linked to a
+non-free library. Below we provide the license for the software in
+legal language as well as a human-readable explanation of what you are
+and what you are not allowed to do, the reasons for which the non-free
+library is essential, and what you could do if you want to help us get
+rid of the non-free library.
 
 1. Legal text
 =============
