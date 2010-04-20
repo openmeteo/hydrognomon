@@ -1238,6 +1238,8 @@ begin
     Assert(False);
   end;
   RegularizeStepDialog.StepMinutes := SourceTimeseries.TimeStep.LengthMinutes;
+  RegularizeStepDialog.TimeOffset := SourceTimeseries.GuessNominalOffset(
+     SourceTimeseries.TimeStep.LengthMinutes);
   if not RegularizeStepDialog.Execute then Exit;
   Update;
   SavedCursor := Screen.Cursor;
