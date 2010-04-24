@@ -677,9 +677,12 @@ begin
     end;
   if (TimeseriesGrid.Count>0) and (IsModified) then
   begin
+    if WindowState = wsMinimized then
+      ShowWindow(Self.Handle, SW_RESTORE);
     actionShowFlags.Checked := False;
     TimeseriesGrid.FlagsVisible := False;
     actionViewAsTable.Checked := False;
+    TimeseriesGrid.DisplayFormat := dfSimple;
     TimeseriesGrid.Refresh;
     TimeseriesGrid.Update;
     SetFocusedControl(TimeseriesGrid);
@@ -688,7 +691,7 @@ begin
     with ARange do
     begin
       Left := 1;
-      Right := TimeseriesGrid.ColCount-1;
+      Right := TimeseriesGrid.Count;
       if TimeseriesGrid.RowCount<2 then
         Top := 0 else Top :=1;
       Bottom := Top;

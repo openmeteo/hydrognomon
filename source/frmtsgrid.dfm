@@ -39,6 +39,7 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
       FlagsVisible = False
       BgColorForStatistics = 13684944
       HighlightColor = clYellow
+      FilteredColor = 16776428
       HighlightMode = hlNone
       HydrologicalYear = False
       OwnsTimeseries = True
