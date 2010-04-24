@@ -604,7 +604,8 @@ begin
   if ApplicationOptions.CheckForNewVersionsOnStartup then
     TCheckThread.Create(ApplicationOptions, ApplicationOptions.UpdatedVersion,
       False);
-  if ApplicationOptions.ShowSplashOnStartup then ShowSplash;
+  if ApplicationOptions.ShowSplashOnStartup then
+    if ParamCount<1 then ShowSplash;
   with ApplicationOptions do
     if FormHeight>0 then
     begin
