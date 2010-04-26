@@ -10182,4 +10182,9 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
     Left = 544
     Top = 256
   end
+  object ApplicationEvents: TApplicationEvents
+    OnModalEnd = ApplicationEventsModalEnd
+    Left = 328
+    Top = 304
+  end
 end

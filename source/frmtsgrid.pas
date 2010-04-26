@@ -17,7 +17,7 @@ uses
   StdCtrls, RpDefine, RpCon, OdAboutInfo, dmdravcomponents, XPMan, ActnMan,
   ActnCtrls, ActnMenus, ActnList, PlatformDefaultStyleActnCtrls,
   XPStyleActnCtrls, ActnPopup, CustomizeDlg,
-  build_date, ShellAPI, UStartup;
+  build_date, ShellAPI, UStartup, AppEvnts;
 
 type
   TFrmTimeseriesGrid = class(TForm)
@@ -177,6 +177,7 @@ type
     actionTestAggregation: TAction;
     AggregateSeriesDialog: TAggregateSeriesDialog;
     actionSeriesAggregation: TAction;
+    ApplicationEvents: TApplicationEvents;
     procedure FormCreate(Sender: TObject);
     procedure MnuLoadFromFileClick(Sender: TObject);
     procedure MnuWriteToFileClick(Sender: TObject);
@@ -271,10 +272,12 @@ type
     procedure actionSeriesAggregationExecute(Sender: TObject);
     procedure TimeseriesGridKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure ApplicationEventsModalEnd(Sender: TObject);
   private
     FLincomb: Integer;
     FTSSelectionArray: TTsSelectionsArray;
     FSavedFlag: Boolean;
+    FQueuedParam: TStringList;
     ReopenMenuItem: TActionClientItem;
     OpenToolItem: TActionClientItem;
     procedure ShowHint(Sender: TObject);
@@ -432,6 +435,16 @@ begin
   ShellExecute(0, 'open', PChar(s), nil, nil, SW_SHOWNORMAL)
 end;
 
+procedure TFrmTimeseriesGrid.ApplicationEventsModalEnd(Sender: TObject);
+var
+  i: Integer;
+begin
+  if Application.ModalLevel>0 then Exit;
+  for i := 0 to FQueuedParam.Count-1 do
+    ProcessParam(FQueuedParam[i]);
+  FQueuedParam.Clear;
+end;
+
 procedure TFrmTimeseriesGrid.CreateParams(var Params: TCreateParams);
 begin
   inherited;
@@ -583,6 +596,7 @@ procedure TFrmTimeseriesGrid.FormCreate(Sender: TObject);
 begin
   DragAcceptFiles( FrmTimeseriesGrid.Handle, True );
   FLincomb := 0;
+  FQueuedParam := TStringList.Create;
   FTSSelectionArray := nil;
   TsprocessSelectionsDialog.SetSelectionArray(FTSSelectionArray);
   try
@@ -738,6 +752,7 @@ end;
 procedure TFrmTimeseriesGrid.FormDestroy(Sender: TObject);
 begin
   DisposeTsSelectionArray;
+  FQueuedParam.Free;
 end;
 
 resourcestring
@@ -3173,8 +3188,6 @@ var
   Param: string;
 begin
   try
-    if (screen.ActiveForm <> nil) and
-      (Screen.ActiveForm.Handle <> Self.Handle) then Exit;
     if Msg.CopyDataStruct.dwData <> cCopyDataWaterMark then
       raise Exception.Create(
         'Invalid data structure passed in WM_COPYDATA'
@@ -3183,7 +3196,10 @@ begin
     while PData^ <> #0 do
     begin
       Param := StrPas(PData);
-      ProcessParam(Param);
+      if Application.ModalLevel>0 then
+        FQueuedParam.Add(Param)
+      else
+        ProcessParam(Param);
       Inc(PData, Length(Param) + 1);
     end;
   finally
