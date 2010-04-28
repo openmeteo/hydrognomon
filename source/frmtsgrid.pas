@@ -346,7 +346,7 @@ begin
   AFileStream := nil;
   ATimeseries := nil;
   SavedCursor := Screen.Cursor;
-  try
+  try try
     Screen.Cursor := crHourGlass;
     ATimeseries := TTimeseries.Create;
     ATimeseries.AssignMeta(TimeseriesGrid.ActiveTimeseries);
@@ -368,7 +368,6 @@ begin
     with TimeseriesGrid do FinalizeBuffer(ActiveIndex);
     SetControlStatus;
   finally
-    Screen.Cursor := SavedCursor;
     AFileStream.Free;
     AMemoryStream.Free;
     ATimeseries.Free;
@@ -376,6 +375,9 @@ begin
   except
     with TimeseriesGrid do RevertBuffer(ActiveIndex);
     raise;
+  end;
+  finally
+    Screen.Cursor := SavedCursor;
   end;
 end;
 
