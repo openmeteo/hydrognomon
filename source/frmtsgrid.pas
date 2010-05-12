@@ -431,7 +431,7 @@ begin
     0: s := 'http://www.youtube.com/hydrognomon';
     1: s := 'http://www.facebook.com/pages/Hydrognomon/326779340275';
     2: s := 'http://www.itia.ntua.gr/help/misc/hydrognomon';
-    3: s := 'http://www.itia.ntua.gr/en/softinfo/28/';
+    3: s := 'http://hydrognomon.org/download.html';
     else Assert(False);
   end;
   ShellExecute(0, 'open', PChar(s), nil, nil, SW_SHOWNORMAL)

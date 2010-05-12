@@ -1211,11 +1211,11 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
     Partner2.Show = True
     Partner2.Name = 'To see Software License, use:'
     Partner2.Copyrights = 'Help / License menu option. Obtain source code from:'
-    Partner2.URL = 'http://www.openmeteo.org/'
+    Partner2.URL = 'http://openmeteo.org/'
     Partner3.Show = True
     Partner3.Name = 'Hydrognomon.org'
     Partner3.Copyrights = '-'
-    Partner3.URL = 'http://www.hydrognomon.org/'
+    Partner3.URL = 'http://hydrognomon.org/'
     BigImage.Data = {
       07544269746D6170E25C0300424DE25C0300000000003600000028000000F300
       00002D0100000100180000000000AC5C0300130B0000130B0000000000000000

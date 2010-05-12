@@ -103,7 +103,7 @@ begin
   FCheckForNewVersionsOnStartup := True;
   FDefaultHydrologicalYearOrigin := 10;
   FUpdatedVersion := '';
-  FUpdateSite := 'http://www.itia.ntua.gr/~soulman/hydrognomon/updated_version';
+  FUpdateSite := 'http://update.hydrognomon.org/updated_version';
   FDownloadSite := '';
   FDefaultTimeZone := PickATZ(-TimeZone.Bias-TimeZone.StandardBias);
   FAppDataFolder := GetSpecialFolderPath(CSIDL_APPDATA)+
