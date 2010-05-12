@@ -97,8 +97,8 @@ license_update.exe]]></PreBuildEvent>
 						<VersionInfo Name="AutoIncBuild">True</VersionInfo>
 						<VersionInfo Name="MajorVer">4</VersionInfo>
 						<VersionInfo Name="MinorVer">0</VersionInfo>
-						<VersionInfo Name="Release">0</VersionInfo>
-						<VersionInfo Name="Build">21</VersionInfo>
+						<VersionInfo Name="Release">1</VersionInfo>
+						<VersionInfo Name="Build">22</VersionInfo>
 						<VersionInfo Name="Debug">False</VersionInfo>
 						<VersionInfo Name="PreRelease">False</VersionInfo>
 						<VersionInfo Name="Special">False</VersionInfo>
@@ -110,7 +110,7 @@ license_update.exe]]></PreBuildEvent>
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName">National Technical University of Athens</VersionInfoKeys>
 						<VersionInfoKeys Name="FileDescription">Hydrognomon - Time series hydrological processing application</VersionInfoKeys>
-						<VersionInfoKeys Name="FileVersion">4.0.0.21</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">4.0.1.22</VersionInfoKeys>
 						<VersionInfoKeys Name="InternalName">hydrognomon</VersionInfoKeys>
 						<VersionInfoKeys Name="LegalCopyright">(c) 2010 by National Technical University of Athens</VersionInfoKeys>
 						<VersionInfoKeys Name="LegalTrademarks"/>
