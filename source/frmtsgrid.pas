@@ -50,7 +50,6 @@ type
     RegressionDialog: TRegressionDialog;
     RegrResultsDialog: TRegrResultsDialog;
     PenmanDialog: TPenmanDialog;
-    TimeseriesPropertiesDialog: TTimeseriesPropertiesDialog;
     LinearCombinationDialog: TLinearCombinationDialog;
     TimeSeriesGraphForm: TTimeSeriesGraphForm;
     StatisticsForm: TStatisticsForm;

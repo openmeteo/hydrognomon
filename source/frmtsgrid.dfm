@@ -1045,16 +1045,6 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
     Left = 416
     Top = 153
   end
-  object TimeseriesPropertiesDialog: TTimeseriesPropertiesDialog
-    HelpContext = 1070
-    StrictTimeStep = False
-    HydrologicalYear = False
-    DateOffsetUnspecified = True
-    VariableType = 1
-    Precision = 2
-    Left = 440
-    Top = 153
-  end
   object LinearCombinationDialog: TLinearCombinationDialog
     HelpContext = 1210
     Left = 160
