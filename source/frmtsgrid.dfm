@@ -9144,10 +9144,11 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
       OnExecute = TlbtnPreviousClick
     end
     object actionNext: TAction
+      Tag = 1
       Caption = 'Next'
       Hint = 'Go to next month or year'
       ImageIndex = 3
-      OnExecute = TlbtnNextClick
+      OnExecute = TlbtnPreviousClick
     end
     object actionDrawGraph: TAction
       Category = 'View'

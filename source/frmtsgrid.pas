@@ -198,7 +198,6 @@ type
     procedure MnuHydrologicalYearClick(Sender: TObject);
     procedure MnuHighlightClick(Sender: TObject);
     procedure TlbtnPreviousClick(Sender: TObject);
-    procedure TlbtnNextClick(Sender: TObject);
     procedure MnuDeleteSelectedRecordsClick(Sender: TObject);
     procedure MnuSetValueClick(Sender: TObject);
     procedure MnuSetFlagsClick(Sender: TObject);
@@ -1698,25 +1697,11 @@ procedure TFrmTimeseriesGrid.TlbtnPreviousClick(Sender: TObject);
 var
   MonthDiff: Integer;
 begin
-  MonthDiff := 0;
+  if TAction(Sender).Tag=1 then MonthDiff := 1 else MonthDiff := -1;
   if TimeseriesGrid.ActiveTimeseries.TimeStep = tstHourly then
-    MonthDiff := -1
+    MonthDiff := MonthDiff
   else if TimeseriesGrid.ActiveTimeseries.TimeStep = tstDaily then
-    MonthDiff := -12
-  else
-    Assert(False);
-  TimeseriesGrid.BaseDate := IncMonth(TimeseriesGrid.BaseDate, MonthDiff);
-end;
-
-procedure TFrmTimeseriesGrid.TlbtnNextClick(Sender: TObject);
-var
-  MonthDiff: Integer;
-begin
-  MonthDiff := 0;
-  if TimeseriesGrid.ActiveTimeseries.TimeStep = tstHourly then
-    MonthDiff := 1
-  else if TimeseriesGrid.ActiveTimeseries.TimeStep = tstDaily then
-    MonthDiff := 12
+    MonthDiff := 12*MonthDiff
   else
     Assert(False);
   TimeseriesGrid.BaseDate := IncMonth(TimeseriesGrid.BaseDate, MonthDiff);
