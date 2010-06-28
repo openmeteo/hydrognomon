@@ -1555,6 +1555,7 @@ begin
         TTimeseries(IndependentTimeseries[i]).Free;
     IndependentTimeseries.Free;
     ATimeseries.Free;
+    ARegressionResults.Free;
     Screen.Cursor := SavedCursor;
   end;
 end;

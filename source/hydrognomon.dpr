@@ -39,13 +39,15 @@ end;
 begin
   if CanStart then
   begin
+    if (DebugHook=1) then
+      ReportMemoryLeaksOnShutdown := True;
     Application.Initialize;
     Application.Title := 'Hydrognomon';
     Application.MainFormOnTaskbar := True;
     Application.CreateForm(TDmdRavreports, DmdRavreports);
-  Application.CreateForm(TFrmTimeseriesGrid, FrmTimeseriesGrid);
-  Application.CreateForm(TFrmLicenseDialog, FrmLicenseDialog);
-  Application.HintHidePause := 60000;
+    Application.CreateForm(TFrmTimeseriesGrid, FrmTimeseriesGrid);
+    Application.CreateForm(TFrmLicenseDialog, FrmLicenseDialog);
+    Application.HintHidePause := 60000;
     Application.Run;
   end;
 end.
