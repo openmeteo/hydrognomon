@@ -1,0 +1,49 @@
+Delimiter=","
+DecimalSeparator="."
+DateFormat="yyyy-mm-dd hh:nn"
+Count=4
+
+StartDate=2000-01-01 00:00
+EndDate=2001-03-31 14:57
+StartMonth=10
+EndMonth=3
+Extension=False
+Logarithmic=True
+Offset= 0.00000000000000E+0000
+PointsCount=2
+
+1,0.841410866499163
+13,37.1603742290731
+StartDate=2000-01-01 00:00
+EndDate=2001-03-31 14:57
+StartMonth=4
+EndMonth=9
+Extension=False
+Logarithmic=True
+Offset= 0.00000000000000E+0000
+PointsCount=2
+
+1,1.34185278147088
+13,53.3716496067725
+StartDate=2001-03-31 14:57
+EndDate=2002-06-13 00:00
+StartMonth=10
+EndMonth=3
+Extension=False
+Logarithmic=True
+Offset= 0.00000000000000E+0000
+PointsCount=2
+
+1,1.53935009466207
+13,154.944806013356
+StartDate=2001-03-31 14:57
+EndDate=2002-06-13 00:00
+StartMonth=4
+EndMonth=9
+Extension=False
+Logarithmic=True
+Offset= 0.00000000000000E+0000
+PointsCount=2
+
+1,2.04547014108562
+13,58.1347346641133
