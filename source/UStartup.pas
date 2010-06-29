@@ -15,7 +15,7 @@ uses
 
 const
   // Name of main window class
-  cWindowClassName = 'HydrognomonV4_0_0_20';
+  cWindowClassName = 'HydrognomonV4_0_2_23';
   // Any 32 bit number here to perform check on copied data
   cCopyDataWaterMark = $C73C14B1;
   // User window message handled by main form ensures that

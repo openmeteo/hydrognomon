@@ -1,6 +1,6 @@
 ﻿********************************************************************
-H y d r o g n o m o n    4   -   V e r s i o n  4.0.1.22
-   M a y   12th,    2 0 1 0
+H y d r o g n o m o n    4   -   V e r s i o n  4.0.2.24
+   J u n e   29th,    2 0 1 0
 ********************************************************************
 
 File: ReadmeEn.txt
@@ -40,7 +40,7 @@ to process and analyze its hydrometeorological data.
 Hydrognomon is now a part of the openemeteo.org framework
 (http://openemeteo.org/).
 
-This is the version 4.0.1, a regular updated version of the 4.x series
+This is the version 4.0.2, a regular updated version of the 4.x series
 of Hydrognomon.
 
 Main hydrognomon site with links for download and more information
@@ -48,7 +48,7 @@ is:
   
   http://hydrognomon.org/
 
-Software will inform you automatically for new versions. If you
+Software will inform you automatically for new versions (*). If you
 want you may subscribe to our special mailing list for this purpose,
 where new versions will be announced together with news and changes.
 The link to subscribe is:
@@ -84,6 +84,15 @@ affecting the terms of use.
 
 2. INSTALLATION
 
+If you have already download the hydrognomon installer
+(setup software), then the installation is done automatically.
+If you install with the installation program, please remove
+any older hydrognomon executable files. Installation
+script is very simple and you can have a plot for
+the steps it follows if you read the following paragraph.
+
+If you have download the single zip archive, please
+follow the steps bellow:
 Installation is straightforward since the only thing
 you need in order to run the software is the "EXE"
 file hydrognomon.exe. You can copy it into a folder
@@ -218,6 +227,17 @@ time steps.
 
 6.2 Recent Changes - bug resolutions
 
+[4.0.2.24 June 12th, 2010]
+-Fixing all memory leak problems.
+-Increase of decimal digits in "Pythia". Ouput of non zero values
+ percent ("Wet days").
+-Fix in an issue of non automatic determination of "Nominal Offset"
+ when set "Time step strict" to on manually.
+-Minor fixes in graphs and software appearance.
+For an auto list with reported and resolved bugs in version
+4.0.1.23, please consider:
+https://www.openmeteo.org/code/query?component=louise&component=Hydrognomon&component=thelma&order=priority&col=id&col=summary&col=status&col=priority&col=component&col=reporter&col=keywords&keywords=~rel_4_0_2
+
 [4.0.1.22 May 12th, 2010]
 -Fix of a major issue observed in some encodings (such as in
  Chinese (PRC)), that denied users to open time series files
@@ -230,6 +250,9 @@ time steps.
  open from shell, the time series opens after closing all modal
  windows.
 -Pythia displays histograms and PDF (probability density functions).
+For an auto list with reported and resolved bugs in version
+4.0.1.22, please consider:
+https://www.openmeteo.org/code/query?component=louise&component=Hydrognomon&component=thelma&order=priority&col=id&col=summary&col=status&col=priority&col=component&col=reporter&col=keywords&keywords=~rel_4_0_1
 
 [4.0.0.20 April 12th, 2010]
 -Improvement in time series reduction with Double mass curve.
@@ -357,3 +380,19 @@ Intermediate version with minor fixes
 
 
 Acknws. Mrs Stefania Polydorou for the English Translation
+
+
+
+(*) Automatic notifications for new version is done by retrieving
+the http://update.hydrognomon.org/updated_version file every time
+software starts. File has on line of the form bellow:
+
+4.0.1.22,http://update.hydrognomon.org/updated_version,http://hydrognomon.org/download.html
+
+It contains the current version number, the update and the 
+download site. During new version checking no personal information
+is transfered.  Automatic notification is a very useful feature,
+but you can if you want deactivate it by adjusting software Options.
+
+You may also check manually for new version with the appropriate
+menu selection.
