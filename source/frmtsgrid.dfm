@@ -23,18 +23,20 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
   TextHeight = 13
   object PnlGridHolder: TPanel
     Left = 0
-    Top = 58
+    Top = 59
     Width = 742
-    Height = 321
+    Height = 320
     Align = alClient
     BevelOuter = bvNone
     Caption = 'PnlGridHolder'
     TabOrder = 0
+    ExplicitTop = 58
+    ExplicitHeight = 321
     object TimeseriesGrid: TTimeseriesGrid
       Left = 0
       Top = 0
       Width = 742
-      Height = 321
+      Height = 320
       DisplayFormat = dfSimple
       FlagsVisible = False
       BgColorForStatistics = 13684944
@@ -55,6 +57,7 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
       OnContextPopup = TimeseriesGridContextPopup
       OnKeyDown = TimeseriesGridKeyDown
       HYearOrigin = 10
+      ExplicitHeight = 321
       ColWidths = (
         105)
     end
@@ -166,9 +169,10 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
     Left = 0
     Top = 23
     Width = 742
-    Height = 35
+    Height = 36
     Align = alTop
     Color = clBtnFace
+    DragMode = dmAutomatic
     ParentBackground = False
     ParentColor = False
     ParentShowHint = False
