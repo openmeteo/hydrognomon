@@ -227,7 +227,7 @@ time steps.
 
 6.2 Recent Changes - bug resolutions
 
-[4.0.2.24 June 12th, 2010]
+[4.0.2.24 June 29th, 2010]
 -Fixing all memory leak problems.
 -Increase of decimal digits in "Pythia". Ouput of non zero values
  percent ("Wet days").
@@ -235,7 +235,7 @@ time steps.
  when set "Time step strict" to on manually.
 -Minor fixes in graphs and software appearance.
 For an auto list with reported and resolved bugs in version
-4.0.1.23, please consider:
+4.0.2.24, please consider:
 https://www.openmeteo.org/code/query?component=louise&component=Hydrognomon&component=thelma&order=priority&col=id&col=summary&col=status&col=priority&col=component&col=reporter&col=keywords&keywords=~rel_4_0_2
 
 [4.0.1.22 May 12th, 2010]
