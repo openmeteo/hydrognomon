@@ -30,8 +30,6 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
     BevelOuter = bvNone
     Caption = 'PnlGridHolder'
     TabOrder = 0
-    ExplicitTop = 58
-    ExplicitHeight = 321
     object TimeseriesGrid: TTimeseriesGrid
       Left = 0
       Top = 0
@@ -57,7 +55,6 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
       OnContextPopup = TimeseriesGridContextPopup
       OnKeyDown = TimeseriesGridKeyDown
       HYearOrigin = 10
-      ExplicitHeight = 321
       ColWidths = (
         105)
     end
@@ -8337,6 +8334,10 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
                 Caption = 'A&llow incompatible units to graphs'
               end
               item
+                Action = actionRoseDiagram
+                Caption = 'Rose diagra&m...'
+              end
+              item
                 Caption = '-'
               end
               item
@@ -9421,6 +9422,11 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
       Caption = 'Aggregation...'
       OnExecute = actionSeriesAggregationExecute
     end
+    object actionRoseDiagram: TAction
+      Category = 'View'
+      Caption = 'Rose diagram...'
+      OnExecute = actionRoseDiagramExecute
+    end
   end
   object ImglsDisabled: TImageList
     Left = 72
@@ -10181,5 +10187,9 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
     OnModalEnd = ApplicationEventsModalEnd
     Left = 328
     Top = 304
+  end
+  object RoseDiagramDialog: TRoseDiagramDialog
+    Left = 544
+    Top = 296
   end
 end

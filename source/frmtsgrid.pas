@@ -177,6 +177,8 @@ type
     AggregateSeriesDialog: TAggregateSeriesDialog;
     actionSeriesAggregation: TAction;
     ApplicationEvents: TApplicationEvents;
+    RoseDiagramDialog: TRoseDiagramDialog;
+    actionRoseDiagram: TAction;
     procedure FormCreate(Sender: TObject);
     procedure MnuLoadFromFileClick(Sender: TObject);
     procedure MnuWriteToFileClick(Sender: TObject);
@@ -271,6 +273,7 @@ type
     procedure TimeseriesGridKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure ApplicationEventsModalEnd(Sender: TObject);
+    procedure actionRoseDiagramExecute(Sender: TObject);
   private
     FLincomb: Integer;
     FTSSelectionArray: TTsSelectionsArray;
@@ -402,6 +405,12 @@ begin
   finally
     if FrmOptions<>nil then FrmOptions.Release;
   end;
+end;
+
+procedure TFrmTimeseriesGrid.actionRoseDiagramExecute(Sender: TObject);
+begin
+  RoseDiagramDialog.ATimeseries := TimeseriesGrid.ActiveTimeseries;
+  RoseDiagramDialog.Execute;
 end;
 
 procedure TFrmTimeseriesGrid.actionShowMainToolbarExecute(Sender: TObject);
@@ -874,6 +883,8 @@ begin
   actionDrawGraph.Enabled := TimeseriesGrid.Count>0;
   actionGraphRemoveTimeSeries.Enabled := TimeseriesGrid.Count>0;
   actionClearGraph.Enabled := TimeseriesGrid.Count>0;
+  actionRoseDiagram.Enabled := (TimeseriesGrid.Count>0) and
+    (TimeseriesGrid.ActiveTimeseries.Count>0);
 
   { Statistics menu }
   actionStats.Enabled := (TimeseriesGrid.Count>0) and
