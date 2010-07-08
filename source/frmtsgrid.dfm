@@ -139,7 +139,15 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
         'ge calculations$0$1'
       
         'ArealIntegrationTimeseries$Time series to integrate$Specify the ' +
-        'time series for the areal integration$1$0')
+        'time series for the areal integration$1$0'
+      
+        'RoseDiagramDirection$Vector series in degrees (required)$The vec' +
+        'tor time series may contain the wind direction, etc. Unit is dec' +
+        'imal degrees such as 156.54$1$1'
+      
+        'RoseDiagramSpeed$Series with speed (optional)$This time series m' +
+        'ay contain wind speed, etc. No matter what unit is used. Could b' +
+        'e m/s or knots or cm/s, etc$0$1')
     TabOrder = 2
     Visible = False
     WordWrap = False

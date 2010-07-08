@@ -409,7 +409,22 @@ end;
 
 procedure TFrmTimeseriesGrid.actionRoseDiagramExecute(Sender: TObject);
 begin
-  RoseDiagramDialog.ATimeseries := TimeseriesGrid.ActiveTimeseries;
+  DisposeTsSelectionArray;
+  SetLength(FTSSelectionArray, 2);
+  SetSelectionValue(0, 'RoseDiagramDirection');
+  SetSelectionValue(1, 'RoseDiagramSpeed');
+  TsprocessSelectionsDialog.SetSelectionArray(FTSSelectionArray);
+  if not TsprocessSelectionsDialog.Execute then Exit;
+  if Length(FTSSelectionArray[0].Timeseries)>0 then
+    RoseDiagramDialog.ATimeseries :=
+      TimeseriesGrid.Data[FTSSelectionArray[0].Timeseries[0]]
+  else
+    RoseDiagramDialog.ATimeseries := nil;
+  if Length(FTSSelectionArray[1].Timeseries)>0 then
+    RoseDiagramDialog.ASpeedTimeseries :=
+      TimeseriesGrid.Data[FTSSelectionArray[1].Timeseries[0]]
+  else
+    RoseDiagramDialog.ASpeedTimeseries := nil;
   RoseDiagramDialog.Execute;
 end;
 
