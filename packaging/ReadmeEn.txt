@@ -1,6 +1,6 @@
 ﻿********************************************************************
-H y d r o g n o m o n    4   -   V e r s i o n  4.0.2.24
-   J u n e   29th,    2 0 1 0
+H y d r o g n o m o n    4   -   V e r s i o n  4.0.3.25
+   J u l y   20th,    2 0 1 0
 ********************************************************************
 
 File: ReadmeEn.txt
@@ -40,7 +40,7 @@ to process and analyze its hydrometeorological data.
 Hydrognomon is now a part of the openemeteo.org framework
 (http://openemeteo.org/).
 
-This is the version 4.0.2, a regular updated version of the 4.x series
+This is the version 4.0.3, a regular updated version of the 4.x series
 of Hydrognomon.
 
 Main hydrognomon site with links for download and more information
@@ -226,6 +226,15 @@ time steps.
  complex calculations of time series, aggregation, etc.
 
 6.2 Recent Changes - bug resolutions
+
+[4.0.3.25 July 20th, 2010]
+-Rose diagrams for winds, etd (Wind roses)
+-Bug fixes in time series graphs
+-Minor aggregation algorithm improvements
+For an auto list with reported and resolved bugs in version
+4.0.3.25, please consider:
+https://www.openmeteo.org/code/query?component=louise&component=Hydrognomon&component=thelma&order=priority&col=id&col=summary&col=status&col=priority&col=component&col=reporter&col=keywords&keywords=~rel_4_0_3
+
 
 [4.0.2.24 June 29th, 2010]
 -Fixing all memory leak problems.

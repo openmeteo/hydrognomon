@@ -1,0 +1,12 @@
+8 Files should be included into the zip:
+SampleData folder
+Hydrognomon.exe
+reprave.rav
+Logo.bmp
+HydrognomonFAQ-GR.txt
+License.txt
+ReadmeEn.txt
+ReadmeGr.txt
+
+If any of the above file is not included in the current directory
+of the repository, please copy e.g. from ../bin
