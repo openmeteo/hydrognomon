@@ -1,6 +1,6 @@
 ﻿********************************************************************
-H y d r o g n o m o n    4   -   V e r s i o n  4.0.3.25
-   J u l y   20th,    2 0 1 0
+H y d r o g n o m o n    4   -   V e r s i o n  4.1.0.26
+   M a r c h   30th,    2 0 1 2
 ********************************************************************
 
 File: ReadmeEn.txt
@@ -40,7 +40,7 @@ to process and analyze its hydrometeorological data.
 Hydrognomon is now a part of the openemeteo.org framework
 (http://openemeteo.org/).
 
-This is the version 4.0.3, a regular updated version of the 4.x series
+This is the version 4.1.0, a regular updated version of the 4.x series
 of Hydrognomon.
 
 Main hydrognomon site with links for download and more information
@@ -139,8 +139,8 @@ User manual:
 
   http://www.itia.ntua.gr/en/docinfo/934/
 
-Currently, the text is in Greek Language only. We hope that
-on 2010, March - May, we could finance an English Language
+Currently, the text is in Greek Language only and We are still
+seeking a source to finance an English Language
 translation of the documentation and manuals.
 
 You can be helped by the material given to the link that 
@@ -227,6 +227,16 @@ time steps.
 
 6.2 Recent Changes - bug resolutions
 
+[4.1.0.26 March 30th, 2012]
+-Maximum Likelihood Estimation (MLE) of statistical distributions
+ parameters
+-Climacograms
+-Improvements in Monte Carlo estimation of confidence intervals.
+-Other bug fixes and improvements.
+A complete list of registered resolutions can be found here:
+https://openmeteo.org/code/query?keywords=rel_4_1_0
+
+
 [4.0.3.25 July 20th, 2010]
 -Rose diagrams for winds, etd (Wind roses)
 -Bug fixes in time series graphs
@@ -234,7 +244,6 @@ time steps.
 For an auto list with reported and resolved bugs in version
 4.0.3.25, please consider:
 https://www.openmeteo.org/code/query?component=louise&component=Hydrognomon&component=thelma&order=priority&col=id&col=summary&col=status&col=priority&col=component&col=reporter&col=keywords&keywords=~rel_4_0_3
-
 
 [4.0.2.24 June 29th, 2010]
 -Fixing all memory leak problems.
