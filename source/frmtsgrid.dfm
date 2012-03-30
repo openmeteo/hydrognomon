@@ -8547,6 +8547,10 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
               item
                 Action = actionIDFCurves
                 Caption = '&Ombros - IDF curves...'
+              end
+              item
+                Action = actionClimacogram
+                Caption = '&Time series climacogram...'
               end>
             Caption = 'H&ydrology'
           end
@@ -8807,6 +8811,10 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
                 Action = actionClearGraph
                 Caption = '&Clear graph'
                 ShortCut = 24658
+              end
+              item
+                Action = actionClimacogram
+                Caption = '&Time series climacogram...'
               end>
             Action = actionDrawGraph
             Caption = '&Graph'
@@ -9434,6 +9442,11 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
       Category = 'View'
       Caption = 'Rose diagram...'
       OnExecute = actionRoseDiagramExecute
+    end
+    object actionClimacogram: TAction
+      Category = 'Hydrology'
+      Caption = 'Time series climacogram...'
+      OnExecute = actionClimacogramExecute
     end
   end
   object ImglsDisabled: TImageList
@@ -10198,6 +10211,11 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
   end
   object RoseDiagramDialog: TRoseDiagramDialog
     Left = 544
+    Top = 296
+  end
+  object ClimacogramDialog: TClimacogramDialog
+    TimeseriesGrid = TimeseriesGrid
+    Left = 640
     Top = 296
   end
 end

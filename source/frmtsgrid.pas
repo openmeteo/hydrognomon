@@ -179,6 +179,8 @@ type
     ApplicationEvents: TApplicationEvents;
     RoseDiagramDialog: TRoseDiagramDialog;
     actionRoseDiagram: TAction;
+    ClimacogramDialog: TClimacogramDialog;
+    actionClimacogram: TAction;
     procedure FormCreate(Sender: TObject);
     procedure MnuLoadFromFileClick(Sender: TObject);
     procedure MnuWriteToFileClick(Sender: TObject);
@@ -274,6 +276,7 @@ type
       Shift: TShiftState);
     procedure ApplicationEventsModalEnd(Sender: TObject);
     procedure actionRoseDiagramExecute(Sender: TObject);
+    procedure actionClimacogramExecute(Sender: TObject);
   private
     FLincomb: Integer;
     FTSSelectionArray: TTsSelectionsArray;
@@ -893,6 +896,7 @@ begin
   actionArealIntegration.Enabled := TimeseriesGrid.Count>0;
   actionIDFCurves.Enabled := TimeseriesGrid.Count>0;
   actionEvaporation.Enabled := TimeseriesGrid.Count>0;
+  actionClimacogram.Enabled := TimeseriesGrid.Count>0;
 
   { Graph menu }
   actionDrawGraph.Enabled := TimeseriesGrid.Count>0;
@@ -3261,6 +3265,11 @@ begin
   ARange.EndIndex := AIndex;
   TimeseriesGrid.SelectionRange := ARange;
   TimeseriesGrid.SetFocus;
+end;
+
+procedure TFrmTimeseriesGrid.actionClimacogramExecute(Sender: TObject);
+begin
+  ClimacogramDialog.Execute;
 end;
 
 end.
