@@ -1178,7 +1178,7 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
   object AboutDialog: TOdAboutInfo
     Partner1.Show = True
     Partner1.Name = 'N. T. University of Athens (ITIA research team)'
-    Partner1.Copyrights = 'Copyright (c) 1997-2010'
+    Partner1.Copyrights = 'Copyright (c) 1997-2012'
     Partner1.URL = 'http://www.itia.ntua.gr/'
     Credits.Strings = (
       'Hydrognomon version 4'

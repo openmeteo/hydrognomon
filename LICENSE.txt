@@ -11,7 +11,7 @@ rid of the non-free library.
 A. Copyright and license for the source code
 --------------------------------------------
 
-Copyright (C) 1997-2010 National Technical University of Athens
+Copyright (C) 1997-2012 National Technical University of Athens
 Copyright (C) 2000 Luis Enrique Silvestre
 Copyright (C) 1992-2009 The University of Tennessee
 Copyright (C) 2000-2004 Adrian Meyer
@@ -51,7 +51,7 @@ library.
 B. Copyright and license for object code (binaries)
 ---------------------------------------------------
 
-Copyright (C) 1997-2010 National Technical University of Athens
+Copyright (C) 1997-2012 National Technical University of Athens
 Copyright (C) 2009 Embarcadero Technologies, Inc.
 Copyright (C) 2000 Luis Enrique Silvestre
 Copyright (C) 1992-2009 The University of Tennessee
