@@ -1117,46 +1117,6 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
     Left = 464
     Top = 177
   end
-  object RvTimeseriesGrid: TRvCustomConnection
-    RuntimeVisibility = rtDeveloper
-    OnGetCols = RvTimeseriesGridGetCols
-    OnGetRow = RvTimeseriesGridGetRow
-    OnOpen = RvTimeseriesGridOpen
-    Left = 512
-    Top = 152
-  end
-  object RvTimeseriesTableMonthly: TRvCustomConnection
-    RuntimeVisibility = rtDeveloper
-    OnGetCols = RvTimeseriesTableMonthlyGetCols
-    OnGetRow = RvTimeseriesTableMonthlyGetRow
-    OnOpen = RvTimeseriesTableMonthlyOpen
-    Left = 544
-    Top = 177
-  end
-  object RvTimeseriesTableDaily: TRvCustomConnection
-    RuntimeVisibility = rtDeveloper
-    OnGetCols = RvTimeseriesTableMonthlyGetCols
-    OnGetRow = RvTimeseriesTableMonthlyGetRow
-    OnOpen = RvTimeseriesTableMonthlyOpen
-    Left = 544
-    Top = 153
-  end
-  object RvTimeseriesMonthlyTitles: TRvCustomConnection
-    RuntimeVisibility = rtDeveloper
-    OnGetCols = RvTimeseriesTableMonthlyGetCols
-    OnGetRow = RvTimeseriesTableMonthlyGetRow
-    OnOpen = RvTimeseriesMonthlyTitlesOpen
-    Left = 568
-    Top = 153
-  end
-  object RvTimeseriesDailyTitles: TRvCustomConnection
-    RuntimeVisibility = rtDeveloper
-    OnGetCols = RvTimeseriesTableMonthlyGetCols
-    OnGetRow = RvTimeseriesTableMonthlyGetRow
-    OnOpen = RvTimeseriesTableMonthlyOpen
-    Left = 512
-    Top = 177
-  end
   object ComplexCalculationsDialog: TComplexCalculationsDialog
     HelpContext = 1230
     TimeseriesGrid = TimeseriesGrid

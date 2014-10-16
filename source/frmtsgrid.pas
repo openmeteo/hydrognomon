@@ -14,7 +14,7 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   Menus, ImgList, ComCtrls, ToolWin, ExtCtrls, tsgrid, TsDialogs,
   Grids, Ts, Matrix, Dates, icomponent, genutils,
-  StdCtrls, RpDefine, RpCon, OdAboutInfo, dmdravcomponents, XPMan, ActnMan,
+  StdCtrls, RpDefine, RpCon, OdAboutInfo, XPMan, ActnMan,
   ActnCtrls, ActnMenus, ActnList, PlatformDefaultStyleActnCtrls,
   XPStyleActnCtrls, ActnPopup, CustomizeDlg,
   build_date, ShellAPI, UStartup, AppEvnts;
@@ -62,11 +62,6 @@ type
     StageDischargeDialog: TStageDischargeDialog;
     TsprocessSelectionsDialog: TTsprocessSelectionsDialog;
     memoSelections: TMemo;
-    RvTimeseriesGrid: TRvCustomConnection;
-    RvTimeseriesTableMonthly: TRvCustomConnection;
-    RvTimeseriesTableDaily: TRvCustomConnection;
-    RvTimeseriesMonthlyTitles: TRvCustomConnection;
-    RvTimeseriesDailyTitles: TRvCustomConnection;
     ComplexCalculationsDialog: TComplexCalculationsDialog;
     DisaggregationDialog: TDisaggregationDialog;
     HydrometryDialog: THydrometryDialog;
@@ -236,17 +231,6 @@ type
     procedure MnuIDFCurvesClick(Sender: TObject);
     procedure MnuCloseClick(Sender: TObject);
     procedure mnuSimpleHydroModelClick(Sender: TObject);
-    procedure RvTimeseriesGridGetCols(Connection: TRvCustomConnection);
-    procedure RvTimeseriesGridGetRow(Connection: TRvCustomConnection);
-    procedure RvTimeseriesGridOpen(Connection: TRvCustomConnection);
-    procedure RvTimeseriesTableMonthlyGetCols(
-      Connection: TRvCustomConnection);
-    procedure RvTimeseriesTableMonthlyGetRow(
-      Connection: TRvCustomConnection);
-    procedure RvTimeseriesTableMonthlyOpen(
-      Connection: TRvCustomConnection);
-    procedure RvTimeseriesMonthlyTitlesOpen(
-      Connection: TRvCustomConnection);
     procedure mnuUndoClick(Sender: TObject);
     procedure mnuRedoClick(Sender: TObject);
     procedure mnuComplexCalculationsClick(Sender: TObject);
@@ -2905,75 +2889,6 @@ procedure TFrmTimeseriesGrid.ReopenActionExecute(Sender: TObject);
 begin
   OpenDialog.Files.Text := (Sender as TCustomAction).Caption;
   MnuLoadFromFileClick(nil);
-end;
-
-procedure TFrmTimeseriesGrid.RvTimeseriesGridGetCols(
-  Connection: TRvCustomConnection);
-begin
-  with Connection do begin
-    WriteField('DATE', dtString, 20, 'Date', 'Time series record date');
-    WriteField('VALUE', dtString, 16, 'Value', 'Time series record value');
-    WriteField('FLAGS', dtString, 20, 'Flags', 'Time series record flag');
-  end;
-end;
-
-procedure TFrmTimeseriesGrid.RvTimeseriesGridGetRow(
-  Connection: TRvCustomConnection);
-begin
-  with Connection do begin
-    WriteStrData('',TimeseriesGrid.ActiveTimeseries[DataIndex].DateAsString);
-    WriteStrData('',TimeseriesGrid.ActiveTimeseries[DataIndex].AsString);
-    WriteStrData('',TimeseriesGrid.ActiveTimeseries[DataIndex].GetAllFlags);
-  end;
-end;
-
-procedure TFrmTimeseriesGrid.RvTimeseriesGridOpen(
-  Connection: TRvCustomConnection);
-begin
-  Connection.DataRows := TimeseriesGrid.ActiveTimeseries.Count
-end;
-
-procedure TFrmTimeseriesGrid.RvTimeseriesTableMonthlyGetCols(
-  Connection: TRvCustomConnection);
-var
-  i: Integer;
-  ATsRecord: TTsRecord;
-begin
-  with Connection do begin
-    for i := 0 to TimeseriesGrid.ColCount-1 do
-      WriteField('TSG'+IntToStr(i),
-        dtString, 9, 'Tsg'+TimeseriesGrid.GetCellText(i,0,ATsRecord), '');
-  end;
-end;
-
-procedure TFrmTimeseriesGrid.RvTimeseriesTableMonthlyGetRow(
-  Connection: TRvCustomConnection);
-var
-  i: Integer;
-  ATsRecord: TTsRecord;
-  AOffset: Integer;
-begin
-  if (Connection = RvTimeseriesMonthlyTitles) or
-    (Connection = RvTimeseriesDailyTitles) then
-    AOffset := 0 else
-    AOffset := 1;
-  with Connection do begin
-    for i := 0 to TimeseriesGrid.ColCount-1 do
-      WriteStrData('', TimeseriesGrid.GetCellText(i, DataIndex+AOffset,
-        ATsRecord));
-  end;
-end;
-
-procedure TFrmTimeseriesGrid.RvTimeseriesTableMonthlyOpen(
-  Connection: TRvCustomConnection);
-begin
-  Connection.DataRows := TimeseriesGrid.RowCount-1;
-end;
-
-procedure TFrmTimeseriesGrid.RvTimeseriesMonthlyTitlesOpen(
-  Connection: TRvCustomConnection);
-begin
-  Connection.DataRows := 1;
 end;
 
 procedure TFrmTimeseriesGrid.mnuUndoClick(Sender: TObject);
