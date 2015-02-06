@@ -23,9 +23,9 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
   TextHeight = 13
   object PnlGridHolder: TPanel
     Left = 0
-    Top = 59
+    Top = 61
     Width = 742
-    Height = 320
+    Height = 318
     Align = alClient
     BevelOuter = bvNone
     Caption = 'PnlGridHolder'
@@ -34,7 +34,7 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
       Left = 0
       Top = 0
       Width = 742
-      Height = 320
+      Height = 318
       DisplayFormat = dfSimple
       FlagsVisible = False
       BgColorForStatistics = 13684944
@@ -156,15 +156,17 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
     Left = 0
     Top = 0
     Width = 742
-    Height = 23
+    Height = 25
     UseSystemFont = False
     ActionManager = ActionManager
     Caption = 'ActionMainMenuBar'
-    ColorMap.HighlightColor = 15660791
-    ColorMap.BtnSelectedColor = clBtnFace
-    ColorMap.UnusedColor = 15660791
+    Color = clMenuBar
+    ColorMap.DisabledFontColor = 7171437
+    ColorMap.HighlightColor = clWhite
+    ColorMap.BtnSelectedFont = clBlack
+    ColorMap.UnusedColor = clWhite
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clBlack
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
@@ -172,7 +174,7 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
   end
   object ControlBar1: TControlBar
     Left = 0
-    Top = 23
+    Top = 25
     Width = 742
     Height = 36
     Align = alTop
@@ -191,10 +193,18 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
       Height = 27
       ActionManager = ActionManager
       Caption = 'MainToolBar'
-      ColorMap.HighlightColor = 15660791
-      ColorMap.BtnSelectedColor = clBtnFace
-      ColorMap.UnusedColor = 15660791
+      Color = clMenuBar
+      ColorMap.DisabledFontColor = 7171437
+      ColorMap.HighlightColor = clWhite
+      ColorMap.BtnSelectedFont = clBlack
+      ColorMap.UnusedColor = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       HorzMargin = 2
+      ParentFont = False
       Spacing = 0
     end
     object EditToolBar: TActionToolBar
@@ -204,10 +214,18 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
       Height = 27
       ActionManager = ActionManager
       Caption = 'EditToolBar'
-      ColorMap.HighlightColor = 15660791
-      ColorMap.BtnSelectedColor = clBtnFace
-      ColorMap.UnusedColor = 15660791
+      Color = clMenuBar
+      ColorMap.DisabledFontColor = 7171437
+      ColorMap.HighlightColor = clWhite
+      ColorMap.BtnSelectedFont = clBlack
+      ColorMap.UnusedColor = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       HorzMargin = 2
+      ParentFont = False
       Spacing = 0
     end
     object ViewToolBar: TActionToolBar
@@ -217,10 +235,18 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
       Height = 27
       ActionManager = ActionManager
       Caption = 'ViewToolBar'
-      ColorMap.HighlightColor = 15660791
-      ColorMap.BtnSelectedColor = clBtnFace
-      ColorMap.UnusedColor = 15660791
+      Color = clMenuBar
+      ColorMap.DisabledFontColor = 7171437
+      ColorMap.HighlightColor = clWhite
+      ColorMap.BtnSelectedFont = clBlack
+      ColorMap.UnusedColor = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       HorzMargin = 2
+      ParentFont = False
       Spacing = 0
     end
   end
@@ -228,7 +254,7 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
     Left = 72
     Top = 128
     Bitmap = {
-      494C010113001900040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010113001900100010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -8072,10 +8098,6 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
     Left = 616
     Top = 152
   end
-  object XPManifest: TXPManifest
-    Left = 640
-    Top = 152
-  end
   object ActionManager: TActionManager
     ActionBars = <
       item
@@ -8134,19 +8156,6 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
                 Caption = 'Series proper&ties...'
                 ImageIndex = 17
                 ShortCut = 32781
-              end
-              item
-                Caption = '-'
-              end
-              item
-                Action = actionPrint
-                Caption = '&Print...'
-                ImageIndex = 18
-                ShortCut = 16464
-              end
-              item
-                Action = mnuPrinterSetup
-                Caption = 'Pr&inter setup...'
               end
               item
                 Caption = '-'
@@ -8841,13 +8850,11 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
       Hint = 'Print current series or table'
       ImageIndex = 18
       ShortCut = 16464
-      OnExecute = mnuPrintClick
     end
     object mnuPrinterSetup: TAction
       Category = 'File'
       Caption = 'Printer setup...'
       Hint = 'Display printer setup dialog'
-      OnExecute = mnuPrinterSetupExecute
     end
     object actionCloseTimeseries: TAction
       Category = 'File'
@@ -9413,7 +9420,7 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
     Left = 72
     Top = 173
     Bitmap = {
-      494C010113001900040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010113001900100010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10079,10 +10086,6 @@ object FrmTimeseriesGrid: TFrmTimeseriesGrid
       0001000F000000000001000F800180010003003F800180010003003FC003C003
       0003807FE007E0070007C0FFF81FF81F00000000000000000000000000000000
       000000000000}
-  end
-  object PrinterSetupDialog: TPrinterSetupDialog
-    Left = 240
-    Top = 104
   end
   object ReopenActionList1: TActionList
     Left = 395

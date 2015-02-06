@@ -1,0 +1,10 @@
+lib/*.dcu
+dcu/*.dcu
+__history/
+*.identcache
+*.local
+*.res
+*.otares
+*.tvsconfig
+*.drc
+bin/hydrognomon.exe

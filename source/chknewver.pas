@@ -52,7 +52,6 @@ begin
     genutils.GetFileVersionStr(ParamStr(0), ver4Items)+')';
   FHTTPClient.Request.Pragma := 'no-cache';
   FreeOnTerminate := True;
-  Resume;
 end;
 
 destructor TCheckThread.Destroy;

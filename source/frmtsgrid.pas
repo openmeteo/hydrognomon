@@ -14,10 +14,10 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   Menus, ImgList, ComCtrls, ToolWin, ExtCtrls, tsgrid, TsDialogs,
   Grids, Ts, Matrix, Dates, icomponent, genutils,
-  StdCtrls, RpDefine, RpCon, OdAboutInfo, XPMan, ActnMan,
+  StdCtrls, OdAboutInfo, ActnMan,
   ActnCtrls, ActnMenus, ActnList, PlatformDefaultStyleActnCtrls,
   XPStyleActnCtrls, ActnPopup, CustomizeDlg,
-  build_date, ShellAPI, UStartup, AppEvnts;
+  ShellAPI, UStartup, AppEvnts, System.Actions;
 
 type
   TFrmTimeseriesGrid = class(TForm)
@@ -66,7 +66,6 @@ type
     DisaggregationDialog: TDisaggregationDialog;
     HydrometryDialog: THydrometryDialog;
     AboutDialog: TOdAboutInfo;
-    XPManifest: TXPManifest;
     ActionManager: TActionManager;
     actionNewTimeseries: TAction;
     actionLoadFromFile: TAction;
@@ -138,7 +137,6 @@ type
     actionEditToolbar: TAction;
     actionViewToolbar: TAction;
     actionPreferences: TAction;
-    PrinterSetupDialog: TPrinterSetupDialog;
     mnuPrinterSetup: TAction;
     Action1: TAction;
     Action2: TAction;
@@ -226,7 +224,6 @@ type
     procedure MnuDoubleMassCurveClick(Sender: TObject);
     procedure mnuQuickSumClick(Sender: TObject);
     procedure mnuSetNullClick(Sender: TObject);
-    procedure mnuPrintClick(Sender: TObject);
     procedure mnuExtremesEvaluationClick(Sender: TObject);
     procedure MnuIDFCurvesClick(Sender: TObject);
     procedure MnuCloseClick(Sender: TObject);
@@ -241,7 +238,6 @@ type
     procedure actionMnuToolbarsUpdateExecute(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure actionPreferencesExecute(Sender: TObject);
-    procedure mnuPrinterSetupExecute(Sender: TObject);
     procedure ReopenActionExecute(Sender: TObject);
     procedure actionSaveExecute(Sender: TObject);
     procedure actionLicenseExecute(Sender: TObject);
@@ -304,11 +300,10 @@ const
 implementation
 
 {$R *.DFM}
-{$R windowsxp.RES}
 
 uses TsProcess, Contnrs, Math, TsEvap, lincombdlg, clipbrd,
   registry, iStrUtils, tsdblmass, DateUtils, frmopts, frmsplash,
-  frmrgopt, frmlicen, chknewver, AppOpts, genopts;
+  frmrgopt, frmlicen, chknewver, AppOpts, genopts, AnsiStrings;
 
 procedure TFrmTimeseriesGrid.actionHelpHelpExecute(Sender: TObject);
 begin
@@ -346,7 +341,6 @@ begin
     with ATimeseries do
       ImportData(AMemoryStream, Options.Encoding, False);
     if ATimeseries.Count<1 then Exit;
-  try
     TimeseriesGrid.IncUndoIDPointer;
     with TimeseriesGrid do
       PrepareBuffer(ActiveIndex, ATimeseries.First.Date, ATimeseries.Last.Date,
@@ -355,16 +349,14 @@ begin
       MergeData(ATimeseries, Options.Overwrite);
     with TimeseriesGrid do FinalizeBuffer(ActiveIndex);
     SetControlStatus;
-  finally
-    AFileStream.Free;
-    AMemoryStream.Free;
-    ATimeseries.Free;
-  end;
   except
     with TimeseriesGrid do RevertBuffer(ActiveIndex);
     raise;
   end;
   finally
+    AFileStream.Free;
+    AMemoryStream.Free;
+    ATimeseries.Free;
     Screen.Cursor := SavedCursor;
   end;
 end;
@@ -650,7 +642,6 @@ begin
   SetupItemCaptions(ReopenMenuItem);
   ReopenMenuItem.Caption := rsReopenMenuCaption;
   OpenToolItem.Caption := rsOpenToolCaption;
-  AboutDialog.BuildDate := build_date.BuildDate;
   Application.OnHint := ShowHint;
   Application.HelpFile := ExtractFileDir(ParamStr(0))+'\'+HelpFileFilename;
   with ApplicationOptions do
@@ -1349,9 +1340,9 @@ begin
     with AggrOptions do
       if (SeasonalAggregation) and (DestSeries.TimeStep = tstAnnual) then
         DestSeries.Comment := DestSeries.Comment +#13#10+
-        rsSeasonFromTo+LongMonthNames[FromMonth]+ ' ('+
+        rsSeasonFromTo+FormatSettings.LongMonthNames[FromMonth]+ ' ('+
         IntToStr(Min(Max(FromDay,1),MonthDays[False][FromMonth]))+'B) - '+
-        LongMonthNames[ToMonth]+ ' ('+
+        FormatSettings.LongMonthNames[ToMonth]+ ' ('+
         IntToStr(Min(Max(ToDay,1),MonthDays[False][ToMonth]))+'E)';
     DestSeries.Title := SourceSeries.Title+'+';
     DestSeries.MUnit := SourceSeries.MUnit;
@@ -1491,7 +1482,8 @@ begin
   DependentTimeseries :=
     TimeseriesGrid.Data[FTSSelectionArray[0].Timeseries[0]];
   IndependentTimeseries := nil;
-  ATimeSeries := nil;  
+  ATimeSeries := nil;
+  ARegressionResults := nil;
   SavedCursor := Screen.Cursor;
   try
     IndependentTimeseries := TObjectList.Create(False);
@@ -1995,8 +1987,8 @@ begin
     Options := Options + [gdfAllowHydrologicalYear];
   DateFormat := GetDateFormat(s, Options, AHYearOrigin);
   ADate := FormatStrToDateTime(DateFormat, s, AHYearOrigin);
+  AIndex := TimeseriesGrid.ActiveIndex;
   try
-    AIndex := TimeseriesGrid.ActiveIndex;
     TimeseriesGrid.IncUndoIDPointer;
     with TimeseriesGrid do
       PrepareBuffer(AIndex, ADate, ADate, rsInsertRecord, UndoIDPointer);
@@ -2605,7 +2597,7 @@ var
   ATimeseries, Destination: TTimeseries;
   AObjectList: TObjectList;
   SavedCursor: TCursor;
-  i, j: Integer;
+  j: Integer;
 begin
   SavedCursor := Screen.Cursor;
   DisposeTsSelectionArray;
@@ -2729,38 +2721,6 @@ end;
 
 resourcestring
   rsPeriod = 'Period: ';
-
-procedure TFrmTimeseriesGrid.mnuPrintClick(Sender: TObject);
-var
-  ATsRecord: TTsRecord;
-begin
-  if TimeseriesGrid.DisplayFormat = dfSimple then
-  begin
-    DmdRavreports.RvProject.SelectReport('rpTimeseriesGridSimple',False);
-  end
-  else
-  begin
-    TimeseriesGrid.StatisticsVisible := True;
-    if TimeseriesGrid.ActiveTimeseries.TimeStep.TimeStepIn([tstMonthly,
-      tstDaily]) then
-      DmdRavreports.RvProject.SelectReport('rpTimeseriesTableMonthly',False)
-    else if TimeseriesGrid.ActiveTimeseries.TimeStep = tstHourly then
-      DmdRavreports.RvProject.SelectReport('rpTimeseriesTableDaily',False)
-    else
-      Assert(False);
-  end;
-  DmdRavreports.RvProject.SetParam('tsgridrepID',
-    IntToStr(TimeseriesGrid.ActiveTimeseries.id));
-  DmdRavreports.RvProject.SetParam('tsgridrepComments',
-    TimeseriesGrid.ActiveTimeseries.Comment);
-  if TimeseriesGrid.DisplayFormat = dfSimple then
-    DmdRavreports.RvProject.SetParam('tsgridtableMonthly', '') else
-    if TimeseriesGrid.ActiveTimeseries.TimeStep = tstMonthly then
-      DmdRavreports.RvProject.SetParam('tsgridtableMonthly', '') else
-        DmdRavreports.RvProject.SetParam('tsgridtableMonthly',
-          rsPeriod+TimeseriesGrid.GetCellText(0, 0, ATsRecord));
-  DmdRavreports.RvProject.Execute;
-end;
 
 resourcestring
   rsExtremeHeight =  'Extreme height';
@@ -3011,11 +2971,6 @@ begin
   AboutDialog.execute;
 end;
 
-procedure TFrmTimeseriesGrid.mnuPrinterSetupExecute(Sender: TObject);
-begin
-  PrinterSetupDialog.Execute;
-end;
-
 procedure TFrmTimeseriesGrid.FindReopenMenuItem(AClient: TActionClient);
 begin
   if AClient is TActionClientItem then
@@ -3067,7 +3022,8 @@ end;
 
 procedure TFrmTimeseriesGrid.WMDROPFILES(var AMessage: TWMDROPFILES);
 var
-  i, uint, FileCount: Integer;
+  i, FileCount: Integer;
+  uint: Cardinal;
   buffer: array[0..255] of char;
 begin
   uint := $FFFFFFFF;
@@ -3127,7 +3083,7 @@ begin
     PData := Msg.CopyDataStruct.lpData;
     while PData^ <> #0 do
     begin
-      Param := StrPas(PData);
+      Param := String(AnsiStrings.StrPas(PData));
       if Application.ModalLevel>0 then
         FQueuedParam.Add(Param)
       else

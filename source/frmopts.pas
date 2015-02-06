@@ -89,7 +89,7 @@ begin
     with TimeZonesArray[i] do
       cmbTimeZones.Items.Add(Abbrev+' (UTC'+ AddPlusSign(Offset) +') '+ Descr);
   for i := 1 to 12 do
-    cmbHydrologicalYear.Items.Add(SysUtils.LongMonthNames[i]);
+    cmbHydrologicalYear.Items.Add(SysUtils.FormatSettings.LongMonthNames[i]);
 end;
 
 procedure TFrmOptions.FormShow(Sender: TObject);

@@ -139,9 +139,9 @@ begin
   for j := 1 to 2 do
   begin
     Registry := nil;
-    SavedDecimalSeparator := SysUtils.DecimalSeparator;
+    SavedDecimalSeparator := SysUtils.FormatSettings.DecimalSeparator;
     try
-      SysUtils.DecimalSeparator := '.';
+      SysUtils.FormatSettings.DecimalSeparator := '.';
       Registry := TRegistry.Create(KEY_READ);
       Registry.RootKey := RootKeys[j];
       if Registry.OpenKey('Software', False) then
@@ -183,7 +183,7 @@ begin
           MRUList[i] := '';
     finally
       Registry.Free;
-      SysUtils.DecimalSeparator := SavedDecimalSeparator;
+      SysUtils.FormatSettings.DecimalSeparator := SavedDecimalSeparator;
     end;
   end;
   Registry := nil;
@@ -206,10 +206,10 @@ var
   i: Integer;
 begin
   inherited WriteToRegistry;
-  SavedDecimalSeparator := Sysutils.DecimalSeparator;
+  SavedDecimalSeparator := Sysutils.FormatSettings.DecimalSeparator;
   Registry := nil;
   try
-    Sysutils.DecimalSeparator := '.';
+    Sysutils.FormatSettings.DecimalSeparator := '.';
     Registry := TRegistry.Create(KEY_ALL_ACCESS);
     Registry.RootKey := HKEY_CURRENT_USER;
     Assert(Registry.OpenKey('Software', True));
@@ -238,7 +238,7 @@ begin
         Registry.WriteString('MRUItem'+IntToStr(i), '');
   finally
     Registry.Free;
-    Sysutils.DecimalSeparator := SavedDecimalSeparator;
+    Sysutils.FormatSettings.DecimalSeparator := SavedDecimalSeparator;
   end;
   Registry := nil;
   try

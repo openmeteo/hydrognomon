@@ -29,7 +29,7 @@ function SwitchToPrevInst(Wdw: HWND): Boolean;
 implementation
 
 uses
-  SysUtils;
+  AnsiStrings, SysUtils;
 
 function SendParamsToPrevInst(Wdw: HWND): Boolean;
 var
@@ -48,7 +48,7 @@ begin
     PData := Data;
     for i := 1 to ParamCount do
     begin
-      StrPCopy(PData, ParamStr(i));
+      AnsiStrings.StrPCopy(PData, AnsiString(ParamStr(i)));
       Inc(PData, Length(ParamStr(i)) + 1);
     end;
     PData^ := #0;
@@ -59,7 +59,7 @@ begin
       Wdw, WM_COPYDATA, 0, LPARAM(@CopyData)
     ) = 1;
   finally
-    StrDispose(Data);
+    AnsiStrings.StrDispose(Data);
   end;
 end;
 
